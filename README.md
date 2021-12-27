@@ -44,7 +44,7 @@ cd ../k8s-eck-stack
 ```
 ./deploy.sh 
 ```
-#### Retrieve credentials kibana dashboard login with 
+#### Retrieve kibana dashboard login credentials with 
 ```
 kubectl get secret -n elastic-system eck-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
