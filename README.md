@@ -1,5 +1,5 @@
 # Pipedrive - ELK Stack
-POC for Pipedrive ELK stack assignement
+POC for Pipedrive ELK stack assignment
 ### Directories in play
 #### For provisiong in google kubernetes engine with terraform
 * tf-gke-cluster
