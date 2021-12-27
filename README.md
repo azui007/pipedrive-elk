@@ -1,4 +1,4 @@
-# pipedrive-elk
+# Pipedrive - ELK Stack
 POC for Pipedrive ELK stack assignement
 
 ### Directories in play
@@ -6,15 +6,15 @@ POC for Pipedrive ELK stack assignement
 * tf-gke-cluster
 * k8s-eck-stalk
 
-## For provisiong in google kubernetes engine
-
+#### For provisiong in local with docker-compose
+* docker-elk-stack
 ### Pre-requisites:
 
-  ##### 1. terraform
-  ##### 2. GCP account
-  ##### 3. configured gcloud sdk
-  ##### 4. kubectl
-  ##### 5. A Project created in GCP dashboard console for terraform access.
+  - terraform
+  - GCP account
+  - configured gcloud sdk
+  - kubectl
+  - A Project created in GCP dashboard console for terraform access.
 
 ### Steps to execute:
 
@@ -57,3 +57,11 @@ kubectl get secret -n elastic-system eck-es-elastic-user -o=jsonpath='{.data.ela
 cd ../tf-gke-cluster
 terraform destroy
 ```
+
+## For provisiong in local with docker-compose (tested in macOS Monterey)
+
+### Pre-requisites:
+
+  - docker-desktop for mac
+
+### Steps to execute:

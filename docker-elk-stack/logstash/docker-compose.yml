@@ -1,11 +1,12 @@
 version: '3'
 services:
   logstash:
-    build: .
+    image: docker-logstash:latest
     container_name: logstash
     volumes:
-      - $PWD/pipeline:/usr/share/logstash/pipeline
-      - $PWD/config/:/usr/share/logstash/config/
+      - ${PWD}/pipeline:/usr/share/logstash/pipeline
+      - ${PWD}/config:/usr/share/logstash/config/
+      - ${PWD}/config/logstash-full.yml:/usr/share/logstash/config/logstash.yml:ro
     ports:
       - 5042:5042
       - 9600:9600
