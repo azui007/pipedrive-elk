@@ -1,0 +1,32 @@
+---
+kind: StorageClass 
+apiVersion: storage.k8s.io/v1 
+metadata:
+  name: es-storage 
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: kubernetes.io/gce-pd 
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: eckelastic
+  namespace: elastic-system
+spec:
+  version: 7.16.2
+  http:
+    service:
+      spec:
+        type: LoadBalancer
+  nodeSets:
+  - name: master-nodes
+    count: 1
+    config:
+      node.roles: ["master"]
+      node.store.allow_mmap: false
+  - name: data-nodes
+    count: 2
+    config:
+      node.roles: ["data"]
+      node.store.allow_mmap: false
