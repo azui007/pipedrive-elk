@@ -1,0 +1,21 @@
+filebeat.inputs:
+- type: container
+  paths:
+    - /var/log/containers/*.log
+
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: false
+
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+            
+processors:
+  - add_cloud_metadata:
+  - add_host_metadata:
+
+output.logstash:
+  hosts: 'logstash:5042'

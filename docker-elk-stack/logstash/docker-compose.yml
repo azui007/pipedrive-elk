@@ -1,0 +1,17 @@
+version: '3'
+services:
+  logstash:
+    build: .
+    container_name: logstash
+    volumes:
+      - $PWD/pipeline:/usr/share/logstash/pipeline
+      - $PWD/config/:/usr/share/logstash/config/
+    ports:
+      - 5042:5042
+      - 9600:9600
+    networks:
+      - logstash
+networks:
+  logstash:
+    external:
+      name: elk
