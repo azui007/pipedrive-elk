@@ -47,6 +47,12 @@ cd ../k8s-eck-stack
 ```
 kubectl get secret -n elastic-system eck-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
+#### Access kibana dashboard with loadbalancer IP
+Retrieve the kibana public facing IP with the below commands and access dashboard at http://$KB_IP:5601
+```
+KB_IP=$(kubectl get svc -n elastic-system "$NAME-kb-http" -o jsonpath='{.status.loadBalancer.ingress[].ip}')
+echo $KB_IP
+```
 #### Run purge script to delete elk stack. (chmod for executable permission)
 ```
 ./purge.sh
