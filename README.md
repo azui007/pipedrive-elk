@@ -45,7 +45,8 @@ cd ../k8s-eck-stack
 ```
 #### Retrieve kibana dashboard login credentials with 
 ```
-kubectl get secret -n elastic-system eck-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
+NAME=eckelastic
+kubectl get secret -n elastic-system $NAME-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
 #### Access kibana dashboard with loadbalancer IP
 Retrieve the kibana public facing IP with the below commands and access dashboard at http://$KB_IP:5601
