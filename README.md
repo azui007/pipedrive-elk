@@ -43,6 +43,10 @@ cd ../k8s-eck-stack
 ```
 ./deploy.sh 
 ```
+#### Wait till all deployed pods are up by checking with the below command
+```
+kubectl get pods -A
+```
 #### Retrieve kibana dashboard login credentials with 
 ```
 NAME=eckelastic
